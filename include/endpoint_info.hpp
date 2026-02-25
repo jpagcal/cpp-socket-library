@@ -27,9 +27,9 @@ private:
 class AddressInfo {
 public:
 	AddressInfo(addrinfo *raw_node) :
-		raw_node_{ raw_node },
-		canonical_name_{ raw_node->ai_canonname },
-	 	address_{ Address(raw_node->ai_addr) } {}
+		raw_node_{ raw_node }, // ni
+		canonical_name_{ raw_node->ai_canonname }, //ni
+	 	address_{ Address(raw_node->ai_addr) } {} //ni
 
 private:
 	addrinfo *raw_node_;

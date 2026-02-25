@@ -1,6 +1,7 @@
 #pragma once
 
 #include "endpoint_info.hpp"
+#include "tcp.hh"
 #include <cstdint>
 #include <netdb.h>
 #include <string>
@@ -25,6 +26,10 @@ public:
 	Resolver();
 	~Resolver();
 	QueryResults results();
+	QueryResults udp_nodes();
+	QueryResults tcp_nodes();
+	tcp::Connection try_connect_tcp();
+	void try_connect_udp(); // TODO: create UDPConnection class
 	std::string print_results();
 
 private:
