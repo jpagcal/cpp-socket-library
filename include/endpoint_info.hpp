@@ -15,24 +15,13 @@ public:
 
 	Address(std::string &address, std::string &port);
 
+	addrinfo *c_addr();
 	int32_t ip_domain();
-	Address get_addr();
-	virtual void print_address();
+	void print_address();
 
 private:
 	sockaddr_storage *raw_address_;
 	int32_t ip_domain_;
-};
-
-class IPV4Address : public Address{
-public:
-	void print_address() override;
-
-};
-
-class IPV6Address : public Address {
-public:
-	void print_address() override;
 };
 
 class AddressInfo {

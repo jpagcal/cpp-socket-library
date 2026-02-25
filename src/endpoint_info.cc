@@ -1,12 +1,15 @@
 #include "../include/endpoint_info.hpp"
 #include "../include/networking.hpp"
+#include <cstdint>
+#include <netinet/in.h>
 #include <sys/_endian.h>
 #include <arpa/inet.h>
+#include <iostream>
 
 inline namespace endpoint_info {
 	Address::Address(std::string &address, std::string &port) {
 		int32_t ip_domain;
-		uint16_t port_num = static_cast<uint16_t>(std::stoi(port));
+		uint16_t port_num = htons(std::stoi(port));
 		auto colon_delim = address.find(":");
 		sockaddr_storage *raw_address;
 
@@ -47,6 +50,56 @@ inline namespace endpoint_info {
 
 		this->raw_address_ = raw_address;
 		this->ip_domain_ = ip_domain;
+	}
 
+	int32_t Address::ip_domain() {
+		return this->ip_domain_;
+	}
+
+	 addrinfo *Address::c_addr() {
+		return reinterpret_cast<addrinfo *>(this->raw_address_);
+	}
+
+	void Address::print_address() {
+		auto get_port_str{
+			[](uint16_t port_num) -> std::string {
+				return std::to_string(
+					ntohs(port_num)
+				);
+			}
+		};
+
+		char addr_buf[64];
+		std::string port;
+
+		switch (this->ip_domain_) {
+			case networking::domain::ipv4: {
+				auto ipv4_raw_address{ reinterpret_cast<sockaddr_in *>(this->raw_address_) };
+				inet_ntop(
+					networking::domain::ipv4,
+					&ipv4_raw_address->sin_addr,
+					addr_buf,
+					ipv4_raw_address->sin_len
+				);
+
+				port = get_port_str(ipv4_raw_address->sin_port);
+				break;
+			}
+
+			default: {
+				auto ipv6_raw_address{ reinterpret_cast<sockaddr_in6 *>(this->raw_address_) };
+				inet_ntop(
+					networking::domain::ipv6,
+					&ipv6_raw_address->sin6_addr,
+					addr_buf,
+					ipv6_raw_address->sin6_len
+				);
+
+				port = get_port_str(ipv6_raw_address->sin6_port);
+				break;
+			}
+		}
+
+		std::cout << addr_buf << ":" << port << '\n';
 	}
 }
