@@ -1,5 +1,6 @@
 #pragma once
 
+#include "networking.hpp"
 #include <cstdint>
 #include <string>
 #include <netdb.h>
@@ -9,18 +10,22 @@ inline namespace endpoint_info {
 
 class Address {
 public:
+	Address() :
+		raw_address_{},
+		ip_domain_{ networking::domain::unspecified_domain } {};
+
 	Address(sockaddr *raw_address) :
-		raw_address_ { reinterpret_cast<sockaddr_storage *>(raw_address) },
+		raw_address_ { *reinterpret_cast<sockaddr_storage *>(raw_address) },
 		ip_domain_{ raw_address->sa_family } {}
 
 	Address(std::string &address, std::string &port);
 
-	addrinfo *c_addr();
+	sockaddr *const c_addr();
 	int32_t ip_domain();
 	void print_address();
 
 private:
-	sockaddr_storage *raw_address_;
+	sockaddr_storage raw_address_;
 	int32_t ip_domain_;
 };
 
