@@ -23,7 +23,6 @@ class Resolver {
 	using RawResults = addrinfo *;
 public:
 	Resolver(std::string hostname, std::string service);
-	Resolver();
 	~Resolver();
 	QueryResults results();
 	QueryResults udp_nodes();

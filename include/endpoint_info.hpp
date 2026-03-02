@@ -14,9 +14,7 @@ public:
 		raw_address_{},
 		ip_domain_{ networking::domain::unspecified_domain } {};
 
-	Address(sockaddr *raw_address) :
-		raw_address_ { *reinterpret_cast<sockaddr_storage *>(raw_address) },
-		ip_domain_{ raw_address->sa_family } {}
+	Address(sockaddr *raw_address);
 
 	Address(std::string &address, std::string &port);
 

@@ -8,6 +8,12 @@
 #include <sys/socket.h>
 
 inline namespace endpoint_info {
+	Address::Address(sockaddr *raw_address) {
+		// initialize with copies of data
+		this->ip_domain_ = raw_address->sa_family;
+		this->raw_address_ = *(reinterpret_cast<sockaddr_storage *>(raw_address));
+	}
+
 	Address::Address(std::string &address, std::string &port) {
 		int32_t ip_domain;
 		uint16_t port_num = htons(std::stoi(port));
