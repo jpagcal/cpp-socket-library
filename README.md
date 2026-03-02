@@ -1,5 +1,5 @@
-# cpp-socket-library
+# net++
 
 This project is currently under construction.
 
-the intention of this project is to abstract the C raw socket API for use in future projects. this way i can also get more familiar with C sockets!
+the intention of this project is to encapsulate the POSIX socket API and related functions for use in future projects.
