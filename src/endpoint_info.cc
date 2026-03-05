@@ -63,13 +63,13 @@ inline namespace endpoint_info {
 		return this->ip_domain_;
 	}
 
-	sockaddr *const Address::c_addr() {
-		return reinterpret_cast<sockaddr *const>(
+	const sockaddr *const Address::c_addr() const { // TODO remove ptr const for return by value
+		return reinterpret_cast<const sockaddr *const>(
 			&(this->raw_address_)
 		);
 	}
 
-	void Address::print_address() {
+	void Address::print_address() const {
 		auto get_port_str{
 			[](uint16_t port_num) -> std::string {
 				return std::to_string(
@@ -84,7 +84,7 @@ inline namespace endpoint_info {
 		switch (this->ip_domain_) {
 			case networking::domain::ipv4: {
 				auto ipv4_raw_address{
-						reinterpret_cast<sockaddr_in *>(
+						reinterpret_cast<const sockaddr_in *>(
 							&(this->raw_address_)
 					)
 				};
@@ -101,7 +101,7 @@ inline namespace endpoint_info {
 
 			default: {
 				auto ipv6_raw_address {
-					reinterpret_cast<sockaddr_in6 *>(
+					reinterpret_cast<const sockaddr_in6 *>(
 						&(this->raw_address_)
 					)
 				};
@@ -121,35 +121,61 @@ inline namespace endpoint_info {
 		std::cout << addr_buf << ":" << port << '\n';
 	}
 
-	void AddressInfo::string_repr() {
-		//TODO: finish implementation
+	void AddressInfo::print_address_info() {
 		std::string protocol;
 		std::string domain;
 		std::string socket_type;
 		std::string address;
 
+		std::cout << "IP domain: ";
+		switch (this->protocol_) {
+			case networking::domain::ipv4:
+				std::cout << "IPV4" << std::endl;
+				break;
+			case networking::domain::ipv6:
+				std::cout << "IPV6" << std::endl;
+				break;
+			default:
+				std::cout << "Unspecified" << std::endl;
+		}
+
+		std::cout << "Name: " << canonical_name_ << std::endl;
+		std::cout << "Address: ";
+	 	(this->address_).print_address();
+
 	}
 
-	int AddressInfo::domain() {
-		return this->raw_node_->ai_family;
+	int AddressInfo::domain() const {
+		return this->ip_domain_;
 	}
 
-	int AddressInfo::socket_type() {
-		return this->raw_node_->ai_socktype;
+	int AddressInfo::socket_type() const {
+		return this->socket_type_;
 	}
 
-	int AddressInfo::protocol() {
-		return this->raw_node_->ai_protocol;
+	int AddressInfo::protocol() const {
+		return this->protocol_;
 	}
 
-	const addrinfo *const AddressInfo::c_addrinfo() {
-		return this->raw_node_;
+	bool AddressInfo::is_udp() const {
+		return (this->socket_type_ == networking::socket_type::udp);
 	}
 
-	int AddressInfo::create_socket() {
-		int socket_fd = socket(this->domain(), this->socket_type(), 0);
+	bool AddressInfo::is_tcp() const {
+		return (this->socket_type_ == networking::socket_type::tcp);
+	}
 
-		//TODO: error handling here
-	 	return socket_fd;
+	addrinfo AddressInfo::c_addrinfo() const {
+		addrinfo c_addrinfo{};
+
+		c_addrinfo.ai_family = this->ip_domain_;
+		c_addrinfo.ai_socktype = this->socket_type_;
+		c_addrinfo.ai_protocol = this->protocol_;
+		c_addrinfo.ai_addrlen = sizeof(sockaddr_storage);
+
+		const sockaddr *const c_addr{ (this->address_).c_addr() };
+		c_addrinfo.ai_addr = const_cast<sockaddr *const>(c_addr);
+
+		return c_addrinfo;
 	}
 }

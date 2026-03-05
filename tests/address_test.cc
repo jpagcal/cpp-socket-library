@@ -26,7 +26,7 @@ TEST_F(AddressTest, PrintsAddressWithPort) {
 TEST_F(AddressTest, emits_a_proper_sockaddr_struct_with_the_correct_fields) {
 	auto c_sockaddr = addr_.c_addr();
 
-	sockaddr_in *const ipv4_sockaddr{ reinterpret_cast<sockaddr_in *const>(c_sockaddr) };
+	const sockaddr_in *const ipv4_sockaddr{ reinterpret_cast<const sockaddr_in *const>(c_sockaddr) };
 	EXPECT_EQ(networking::domain::ipv4, ipv4_sockaddr->sin_family);
 	EXPECT_EQ(htons(atoi("8080")), ipv4_sockaddr->sin_port);
 }
@@ -51,7 +51,7 @@ TEST_F(AddressTest, creates_a_copy_of_the_raw_c_struct_when_constructing_with_a_
 	address->print_address();
 	EXPECT_EQ(AF_INET, address->ip_domain());
 
-	sockaddr_in *const c_addr{ reinterpret_cast<sockaddr_in *>(address->c_addr()) };
+	const sockaddr_in *const c_addr{ reinterpret_cast<const sockaddr_in *>(address->c_addr()) };
 	EXPECT_EQ(htons(8000), c_addr->sin_port);
 
 	char ip_str[INET_ADDRSTRLEN];

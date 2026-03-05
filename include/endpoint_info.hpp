@@ -18,9 +18,9 @@ public:
 
 	Address(std::string &address, std::string &port);
 
-	sockaddr *const c_addr();
+	const sockaddr *const c_addr() const;
 	int32_t ip_domain();
-	void print_address();
+	void print_address() const;
 
 private:
 	sockaddr_storage raw_address_;
@@ -30,20 +30,30 @@ private:
 class AddressInfo {
 public:
 	AddressInfo(addrinfo *raw_node) :
-		raw_node_{ raw_node },
-	 	address_{ Address(raw_node->ai_addr) } {}
+	 	address_{ Address(raw_node->ai_addr) },
+		ip_domain_{raw_node->ai_family},
+		socket_type_{ raw_node->ai_socktype },
+		protocol_{ raw_node->ai_protocol },
+		canonical_name_{ raw_node->ai_canonname } {};
 
-	void string_repr();
-	int domain();
-	int socket_type();
-	int protocol();
-	const addrinfo *const c_addrinfo();
-	int create_socket();
+
+	void print_address_info();
+	addrinfo c_addrinfo() const;
+
+	int domain() const;
+	bool is_udp() const;
+	bool is_tcp() const;
+	int socket_type() const;
+	int protocol() const;
+
+	//TODO: add a try_connect function here
 
 private:
-	const addrinfo *const raw_node_;
 	const Address address_;
-
+	const int32_t ip_domain_;
+	const int32_t socket_type_;
+	const int32_t protocol_;
+	const std::string canonical_name_;
 };
 
 } // namespace endpoint_info
