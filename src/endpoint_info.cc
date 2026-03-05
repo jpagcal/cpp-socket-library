@@ -59,12 +59,12 @@ inline namespace endpoint_info {
 		this->ip_domain_ = ip_domain;
 	}
 
-	int32_t Address::ip_domain() {
+	int32_t Address::ip_domain() const {
 		return this->ip_domain_;
 	}
 
-	const sockaddr *const Address::c_addr() const { // TODO remove ptr const for return by value
-		return reinterpret_cast<const sockaddr *const>(
+	const sockaddr *Address::c_addr() const {
+		return reinterpret_cast<const sockaddr *>(
 			&(this->raw_address_)
 		);
 	}
@@ -121,7 +121,7 @@ inline namespace endpoint_info {
 		std::cout << addr_buf << ":" << port << '\n';
 	}
 
-	void AddressInfo::print_address_info() {
+	void AddressInfo::print_address_info() const {
 		std::string protocol;
 		std::string domain;
 		std::string socket_type;
@@ -178,4 +178,4 @@ inline namespace endpoint_info {
 
 		return c_addrinfo;
 	}
-}
+} // namespace endpoint_info

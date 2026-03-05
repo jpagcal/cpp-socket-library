@@ -18,8 +18,8 @@ public:
 
 	Address(std::string &address, std::string &port);
 
-	const sockaddr *const c_addr() const;
-	int32_t ip_domain();
+	const sockaddr *c_addr() const;
+	int32_t ip_domain() const;
 	void print_address() const;
 
 private:
@@ -37,7 +37,7 @@ public:
 		canonical_name_{ raw_node->ai_canonname } {};
 
 
-	void print_address_info();
+	void print_address_info() const;
 	addrinfo c_addrinfo() const;
 
 	int domain() const;
