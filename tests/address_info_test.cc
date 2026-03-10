@@ -52,6 +52,4 @@ TEST_F(AddressInfoTest, outputted_c_addrinfo_matches) {
 
 	int i = memcmp(&c_addrinfo, &node_addrinfo, sizeof(sockaddr));
 	EXPECT_EQ(i, 0);
-	std::cout << i << '\n';
-
 }
