@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: "generate library documentation"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ github.workspace }}
+    steps:
+      # -----------------------------------------------
+      # checks out the latest version of the repository
+      # -----------------------------------------------
+      - name: checkout repository
+        uses: actions/checkout@v4
+
+      - name: install doxygen
+        run: sudo apt-get install doxygen
+
+      - name: build docs
+        run: mkdir docs && doxygen
+
+      - name: deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          foler: docs

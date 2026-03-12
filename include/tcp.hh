@@ -5,7 +5,7 @@
 
 namespace tcp {
 	/**
-	 * Represents a connected socket
+	 * @brief Represents a connected socket
 	 */
 	class Connection {
 		public:
