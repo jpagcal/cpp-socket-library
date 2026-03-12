@@ -111,37 +111,85 @@ $(document).ready(function(){initNavTree('resolver_8hpp_source.html',''); initRe
 <div class="foldopen" id="foldopen00011" data-start="{" data-end="}">
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="namespaceconn__resolver.html">   11</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceconn__resolver.html">conn_resolver</a> {</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structconn__resolver_1_1ResolverHints.html">   13</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structconn__resolver_1_1ResolverHints.html">ResolverHints</a> {</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="structconn__resolver_1_1ResolverHints.html#ae90288e52fa319b10ce50cb186f721ac">   14</a></span>    int32_t <a class="code hl_variable" href="structconn__resolver_1_1ResolverHints.html#ae90288e52fa319b10ce50cb186f721ac">endpoint_type</a> = networking::socket_type::raw;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structconn__resolver_1_1ResolverHints.html#aad16b5fa79a23763b590b6d9c8d74a3d">   15</a></span>    int32_t <a class="code hl_variable" href="structconn__resolver_1_1ResolverHints.html#aad16b5fa79a23763b590b6d9c8d74a3d">ip_domain</a> = networking::domain::unspecified_domain;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structconn__resolver_1_1ResolverHints.html#a9843ca9271ed24a34a230d3a9fc99af2">   16</a></span>    int32_t <a class="code hl_variable" href="structconn__resolver_1_1ResolverHints.html#a9843ca9271ed24a34a230d3a9fc99af2">protocol</a>;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structconn__resolver_1_1ResolverHints.html#ae2db764d6f73528934632fc44b1e4a7c">   17</a></span>    int32_t <a class="code hl_variable" href="structconn__resolver_1_1ResolverHints.html#ae2db764d6f73528934632fc44b1e4a7c">flags</a>;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>};</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * @brief A structure to represent the hint parameters passed into getaddrinfo</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structconn__resolver_1_1ResolverHints.html">   16</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structconn__resolver_1_1ResolverHints.html">ResolverHints</a> {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structconn__resolver_1_1ResolverHints.html#ae90288e52fa319b10ce50cb186f721ac">   17</a></span>    int32_t <a class="code hl_variable" href="structconn__resolver_1_1ResolverHints.html#ae90288e52fa319b10ce50cb186f721ac">endpoint_type</a> = networking::socket_type::raw; </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structconn__resolver_1_1ResolverHints.html#aad16b5fa79a23763b590b6d9c8d74a3d">   18</a></span>    int32_t <a class="code hl_variable" href="structconn__resolver_1_1ResolverHints.html#aad16b5fa79a23763b590b6d9c8d74a3d">ip_domain</a> = networking::domain::unspecified_domain; </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structconn__resolver_1_1ResolverHints.html#a9843ca9271ed24a34a230d3a9fc99af2">   19</a></span>    int32_t <a class="code hl_variable" href="structconn__resolver_1_1ResolverHints.html#a9843ca9271ed24a34a230d3a9fc99af2">protocol</a>; </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structconn__resolver_1_1ResolverHints.html#ae2db764d6f73528934632fc44b1e4a7c">   20</a></span>    int32_t <a class="code hl_variable" href="structconn__resolver_1_1ResolverHints.html#ae2db764d6f73528934632fc44b1e4a7c">flags</a>; </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>};</div>
 </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespaceconn__resolver.html#acfefc9a84456307ccf03615279660d47">   20</a></span>addrinfo <a class="code hl_function" href="namespaceconn__resolver.html#acfefc9a84456307ccf03615279660d47">craft_resolver_hints</a>(<a class="code hl_struct" href="structconn__resolver_1_1ResolverHints.html">ResolverHints</a> &amp;hints);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classconn__resolver_1_1Resolver.html">   22</a></span><span class="keyword">class </span><a class="code hl_class" href="classconn__resolver_1_1Resolver.html">Resolver</a> {</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">using </span>QueryResults = std::vector&lt;AddressInfo&gt;;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">using </span>RawResults = addrinfo *;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classconn__resolver_1_1Resolver.html#a542e0f3cf0eeba59494329806cf81073">   26</a></span>    <a class="code hl_function" href="classconn__resolver_1_1Resolver.html#a542e0f3cf0eeba59494329806cf81073">Resolver</a>(std::string hostname, std::string service);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classconn__resolver_1_1Resolver.html#ae01b93fb698e2d516115b9e3ef605ef7">   27</a></span>    QueryResults <a class="code hl_function" href="classconn__resolver_1_1Resolver.html#ae01b93fb698e2d516115b9e3ef605ef7">results</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classconn__resolver_1_1Resolver.html#ab913504afbae949bc27c91e3759635fa">   28</a></span>    QueryResults <a class="code hl_function" href="classconn__resolver_1_1Resolver.html#ab913504afbae949bc27c91e3759635fa">udp_nodes</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classconn__resolver_1_1Resolver.html#a286aa04a2aa1b7fc7eccf60643646aeb">   29</a></span>    QueryResults <a class="code hl_function" href="classconn__resolver_1_1Resolver.html#a286aa04a2aa1b7fc7eccf60643646aeb">tcp_nodes</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classconn__resolver_1_1Resolver.html#a97e19e4571d0be8fb343958f65695969">   30</a></span>    <a class="code hl_class" href="classtcp_1_1Connection.html">tcp::Connection</a> <a class="code hl_function" href="classconn__resolver_1_1Resolver.html#a97e19e4571d0be8fb343958f65695969">try_connect_tcp</a>();</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classconn__resolver_1_1Resolver.html#a856243ec8c6395d9da967c65acccbea3">   31</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classconn__resolver_1_1Resolver.html#a856243ec8c6395d9da967c65acccbea3">try_connect_udp</a>(); <span class="comment">// TODO: create UDPConnection class</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classconn__resolver_1_1Resolver.html#a4eeb7ca4ccfbdfcc15ed3e0aca5effc3">   32</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classconn__resolver_1_1Resolver.html#a4eeb7ca4ccfbdfcc15ed3e0aca5effc3">print_results</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    QueryResults query_results_;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>};</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * @brief Creates the raw struct addrinfo out of struct ResolverHints</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> * @param hints The resolver hints struct</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="namespaceconn__resolver.html#acfefc9a84456307ccf03615279660d47">   28</a></span>addrinfo <a class="code hl_function" href="namespaceconn__resolver.html#acfefc9a84456307ccf03615279660d47">craft_resolver_hints</a>(<a class="code hl_struct" href="structconn__resolver_1_1ResolverHints.html">ResolverHints</a> &amp;hints);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment"> * @brief The Resolver class</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"> * Encapsulates getaddrinfo functionality, providing methods to filter, print, and connect to results</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="};">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classconn__resolver_1_1Resolver.html">   35</a></span><span class="keyword">class </span><a class="code hl_class" href="classconn__resolver_1_1Resolver.html">Resolver</a> {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">using </span>QueryResults = std::vector&lt;AddressInfo&gt;;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">using </span>RawResults = addrinfo *;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">/*</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">     * @brief The Resolver constructor</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">     * @param hostname the host to connect to</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">     * @param service the desired service of the target host</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classconn__resolver_1_1Resolver.html#a542e0f3cf0eeba59494329806cf81073">   46</a></span>    <a class="code hl_function" href="classconn__resolver_1_1Resolver.html#a542e0f3cf0eeba59494329806cf81073">Resolver</a>(std::string hostname, std::string service);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">/*</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">     * @brief Returns attribute query_results_</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classconn__resolver_1_1Resolver.html#ae01b93fb698e2d516115b9e3ef605ef7">   51</a></span>    QueryResults <a class="code hl_function" href="classconn__resolver_1_1Resolver.html#ae01b93fb698e2d516115b9e3ef605ef7">results</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">/*</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">     * @brief Returns only UDP nodes in query_results_</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classconn__resolver_1_1Resolver.html#ab913504afbae949bc27c91e3759635fa">   56</a></span>    QueryResults <a class="code hl_function" href="classconn__resolver_1_1Resolver.html#ab913504afbae949bc27c91e3759635fa">udp_nodes</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">/*</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">     * @brief Returns only TCP nodes in query_results</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classconn__resolver_1_1Resolver.html#a286aa04a2aa1b7fc7eccf60643646aeb">   61</a></span>    QueryResults <a class="code hl_function" href="classconn__resolver_1_1Resolver.html#a286aa04a2aa1b7fc7eccf60643646aeb">tcp_nodes</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">/*</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">     * @brief Attempts to connect to the target host using protocol TCP</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">     * @returns a TCP connection to the target host</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classconn__resolver_1_1Resolver.html#a97e19e4571d0be8fb343958f65695969">   68</a></span>    <a class="code hl_class" href="classtcp_1_1Connection.html">tcp::Connection</a> <a class="code hl_function" href="classconn__resolver_1_1Resolver.html#a97e19e4571d0be8fb343958f65695969">try_connect_tcp</a>();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">/*</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">    * @brief Attempts to connect to the target host using protocol UDP</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">    *</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">    * @returns a UDP connection to the target host</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">    */</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classconn__resolver_1_1Resolver.html#a856243ec8c6395d9da967c65acccbea3">   75</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classconn__resolver_1_1Resolver.html#a856243ec8c6395d9da967c65acccbea3">try_connect_udp</a>(); <span class="comment">// TODO: create UDPConnection class</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">/*</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">     * @brief prints query results to stdout</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classconn__resolver_1_1Resolver.html#a4eeb7ca4ccfbdfcc15ed3e0aca5effc3">   80</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classconn__resolver_1_1Resolver.html#a4eeb7ca4ccfbdfcc15ed3e0aca5effc3">print_results</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    QueryResults query_results_; </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>};</div>
 </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>} <span class="comment">// namespace resolver</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>} <span class="comment">// namespace resolver</span></div>
 </div>
-<div class="ttc" id="aclassconn__resolver_1_1Resolver_html"><div class="ttname"><a href="classconn__resolver_1_1Resolver.html">conn_resolver::Resolver</a></div><div class="ttdef"><b>Definition</b> resolver.hpp:22</div></div>
+<div class="ttc" id="aclassconn__resolver_1_1Resolver_html"><div class="ttname"><a href="classconn__resolver_1_1Resolver.html">conn_resolver::Resolver</a></div><div class="ttdef"><b>Definition</b> resolver.hpp:35</div></div>
 <div class="ttc" id="aclassconn__resolver_1_1Resolver_html_a286aa04a2aa1b7fc7eccf60643646aeb"><div class="ttname"><a href="classconn__resolver_1_1Resolver.html#a286aa04a2aa1b7fc7eccf60643646aeb">conn_resolver::Resolver::tcp_nodes</a></div><div class="ttdeci">QueryResults tcp_nodes() const</div></div>
 <div class="ttc" id="aclassconn__resolver_1_1Resolver_html_a4eeb7ca4ccfbdfcc15ed3e0aca5effc3"><div class="ttname"><a href="classconn__resolver_1_1Resolver.html#a4eeb7ca4ccfbdfcc15ed3e0aca5effc3">conn_resolver::Resolver::print_results</a></div><div class="ttdeci">void print_results() const</div></div>
 <div class="ttc" id="aclassconn__resolver_1_1Resolver_html_a542e0f3cf0eeba59494329806cf81073"><div class="ttname"><a href="classconn__resolver_1_1Resolver.html#a542e0f3cf0eeba59494329806cf81073">conn_resolver::Resolver::Resolver</a></div><div class="ttdeci">Resolver(std::string hostname, std::string service)</div></div>
@@ -154,11 +202,11 @@ $(document).ready(function(){initNavTree('resolver_8hpp_source.html',''); initRe
 <div class="ttc" id="anamespaceconn__resolver_html"><div class="ttname"><a href="namespaceconn__resolver.html">conn_resolver</a></div><div class="ttdef"><b>Definition</b> resolver.hpp:11</div></div>
 <div class="ttc" id="anamespaceconn__resolver_html_acfefc9a84456307ccf03615279660d47"><div class="ttname"><a href="namespaceconn__resolver.html#acfefc9a84456307ccf03615279660d47">conn_resolver::craft_resolver_hints</a></div><div class="ttdeci">addrinfo craft_resolver_hints(ResolverHints &amp;hints)</div></div>
 <div class="ttc" id="anetworking_8hpp_html"><div class="ttname"><a href="networking_8hpp.html">networking.hpp</a></div></div>
-<div class="ttc" id="astructconn__resolver_1_1ResolverHints_html"><div class="ttname"><a href="structconn__resolver_1_1ResolverHints.html">conn_resolver::ResolverHints</a></div><div class="ttdef"><b>Definition</b> resolver.hpp:13</div></div>
-<div class="ttc" id="astructconn__resolver_1_1ResolverHints_html_a9843ca9271ed24a34a230d3a9fc99af2"><div class="ttname"><a href="structconn__resolver_1_1ResolverHints.html#a9843ca9271ed24a34a230d3a9fc99af2">conn_resolver::ResolverHints::protocol</a></div><div class="ttdeci">int32_t protocol</div><div class="ttdef"><b>Definition</b> resolver.hpp:16</div></div>
-<div class="ttc" id="astructconn__resolver_1_1ResolverHints_html_aad16b5fa79a23763b590b6d9c8d74a3d"><div class="ttname"><a href="structconn__resolver_1_1ResolverHints.html#aad16b5fa79a23763b590b6d9c8d74a3d">conn_resolver::ResolverHints::ip_domain</a></div><div class="ttdeci">int32_t ip_domain</div><div class="ttdef"><b>Definition</b> resolver.hpp:15</div></div>
-<div class="ttc" id="astructconn__resolver_1_1ResolverHints_html_ae2db764d6f73528934632fc44b1e4a7c"><div class="ttname"><a href="structconn__resolver_1_1ResolverHints.html#ae2db764d6f73528934632fc44b1e4a7c">conn_resolver::ResolverHints::flags</a></div><div class="ttdeci">int32_t flags</div><div class="ttdef"><b>Definition</b> resolver.hpp:17</div></div>
-<div class="ttc" id="astructconn__resolver_1_1ResolverHints_html_ae90288e52fa319b10ce50cb186f721ac"><div class="ttname"><a href="structconn__resolver_1_1ResolverHints.html#ae90288e52fa319b10ce50cb186f721ac">conn_resolver::ResolverHints::endpoint_type</a></div><div class="ttdeci">int32_t endpoint_type</div><div class="ttdef"><b>Definition</b> resolver.hpp:14</div></div>
+<div class="ttc" id="astructconn__resolver_1_1ResolverHints_html"><div class="ttname"><a href="structconn__resolver_1_1ResolverHints.html">conn_resolver::ResolverHints</a></div><div class="ttdef"><b>Definition</b> resolver.hpp:16</div></div>
+<div class="ttc" id="astructconn__resolver_1_1ResolverHints_html_a9843ca9271ed24a34a230d3a9fc99af2"><div class="ttname"><a href="structconn__resolver_1_1ResolverHints.html#a9843ca9271ed24a34a230d3a9fc99af2">conn_resolver::ResolverHints::protocol</a></div><div class="ttdeci">int32_t protocol</div><div class="ttdef"><b>Definition</b> resolver.hpp:19</div></div>
+<div class="ttc" id="astructconn__resolver_1_1ResolverHints_html_aad16b5fa79a23763b590b6d9c8d74a3d"><div class="ttname"><a href="structconn__resolver_1_1ResolverHints.html#aad16b5fa79a23763b590b6d9c8d74a3d">conn_resolver::ResolverHints::ip_domain</a></div><div class="ttdeci">int32_t ip_domain</div><div class="ttdef"><b>Definition</b> resolver.hpp:18</div></div>
+<div class="ttc" id="astructconn__resolver_1_1ResolverHints_html_ae2db764d6f73528934632fc44b1e4a7c"><div class="ttname"><a href="structconn__resolver_1_1ResolverHints.html#ae2db764d6f73528934632fc44b1e4a7c">conn_resolver::ResolverHints::flags</a></div><div class="ttdeci">int32_t flags</div><div class="ttdef"><b>Definition</b> resolver.hpp:20</div></div>
+<div class="ttc" id="astructconn__resolver_1_1ResolverHints_html_ae90288e52fa319b10ce50cb186f721ac"><div class="ttname"><a href="structconn__resolver_1_1ResolverHints.html#ae90288e52fa319b10ce50cb186f721ac">conn_resolver::ResolverHints::endpoint_type</a></div><div class="ttdeci">int32_t endpoint_type</div><div class="ttdef"><b>Definition</b> resolver.hpp:17</div></div>
 <div class="ttc" id="atcp_8hh_html"><div class="ttname"><a href="tcp_8hh.html">tcp.hh</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
