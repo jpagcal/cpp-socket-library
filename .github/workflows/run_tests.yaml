@@ -18,7 +18,7 @@ jobs:
       # Checks out the latest version of the repository
       # -----------------------------------------------
       - name: checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # -----------------------------------------------
       # Creates build artifacts
