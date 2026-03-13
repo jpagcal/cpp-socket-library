@@ -1,7 +1,7 @@
 var classtcp_1_1Connection =
 [
+    [ "connection_ptr", "classtcp_1_1Connection.html#acf0742f632b67b68bcb408203fad7cf3", null ],
     [ "Connection", "classtcp_1_1Connection.html#a5795f66e021e87bb4190442d93111422", null ],
-    [ "create", "classtcp_1_1Connection.html#a2fdd271f3c2c3491560244cd3e30b1fa", null ],
     [ "is_nonblocking", "classtcp_1_1Connection.html#af28d56c4049469095f65981be78cacd4", null ],
     [ "operator=", "classtcp_1_1Connection.html#a3aff1f6c7ee36d2a0d9c52a3210e87fa", null ],
     [ "recv_async", "classtcp_1_1Connection.html#aed6b6f06c8a962a484542bf4d31f16fb", null ],
